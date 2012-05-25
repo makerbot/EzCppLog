@@ -3,7 +3,14 @@
 
 namespace axter
 {
-	enum verbosity{log_default_verbosity_level = 3, log_verbosity_not_set = 0, log_always = 1, log_often, log_regularly, log_rarely, log_very_rarely};
+	enum verbosity{
+		log_default_level = 3,
+		log_verbosity_unset = 0,
+		log_severe = 1, //was always
+		log_info, //was often
+		log_fine, //was regularly
+		log_finer, ///was rarely
+		log_finest}; // was very_rarely
 
 /*! @struct ezlogger_verbosity_level_policy
 @brief Defines implementation for setting initial global verbosity level.
@@ -34,8 +41,8 @@ have a public set_verbosity_level_tolerance() method.
 		static inline verbosity get_verbosity_level_tolerance(){return set_or_get_verbosity_level_tolerance(true);}
 		static void set_verbosity_level_tolerance(verbosity NewValue){set_or_get_verbosity_level_tolerance(false, NewValue);}
 	private:
-		inline static verbosity initial_verbosity_level(){return log_default_verbosity_level;}
-		static verbosity set_or_get_verbosity_level_tolerance(bool GetLevel, verbosity NewValue = log_default_verbosity_level)
+		inline static verbosity initial_verbosity_level(){return log_default_level;}
+		static verbosity set_or_get_verbosity_level_tolerance(bool GetLevel, verbosity NewValue = log_default_level)
 		{
 			static verbosity verbosity_level = initial_verbosity_level();
 			if (!GetLevel) verbosity_level = NewValue;

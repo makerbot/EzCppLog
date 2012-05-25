@@ -96,7 +96,7 @@ namespace axter
 	{
 	public:
 		inline ezlogger(const char*filename, int lineno, const char*functionname, 
-			verbosity verbosity_level = log_default_verbosity_level, 
+			verbosity verbosity_level = log_default_level, 
 			bool isstreamoutput = false, std::ostream* alternate_output = NULL)
 			:m_src_file_name(filename), m_src_line_num(lineno), 
 			m_src_function_name(functionname), m_verbosity_level(verbosity_level),
@@ -291,7 +291,7 @@ namespace axter
 	{
 	public:
 		inline ezfunction_tracker(const char*filename, int lineno, const char*functionname, 
-			verbosity verbosity_level = log_default_verbosity_level, 
+			verbosity verbosity_level = log_default_level, 
 			bool isstreamoutput = false, std::ostream* alternate_output = NULL)
 			:ezlogger<>(filename, lineno, functionname, verbosity_level, isstreamoutput, alternate_output)
 		{
